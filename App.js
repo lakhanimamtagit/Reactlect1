@@ -1,65 +1,46 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// const headingnew = React.createElement("h1",{id: "headingNew"}, "Hello World from App.js file");
-// console.log("headingnew"); // return a object
-// root.render(headingnew);
+//React.createElement =>React Element- Object =>HTMLElement(render)
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
 
-// const heading = React.createElement("h1", { id: "heading" }, "Hello World from React!");
-// console.log(heading); // return a object
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
+console.log(heading);
 
-/**
- * <div id="parent">
- * <div id="child">
- * <h1 > I am h1 tag </h1>
- * </div>
- * </div>
- */
+//JSX is not HTML in JS
+//JSX it is HTML like syntax or we can say XML like syntax
+//JSX code is transpiled before reaching to JS Enginee - PARCEL(Manager)- job done by babel
+const ele =<span>React Elem</span>
+const JSXheading = (
+  <h1 id="heading" tabIndex="1">
+    {ele}
+    Namaste React using JSX
+  </h1>
+);
+console.log(JSXheading);
 
+//React Function Component
+const number = 10000;
+// const data =api.getData(); if this has malicious data and we cann this data in JSX then due to JSX cross site scripting attcak will be stopped
+// JSX is not blinding pushing data it will sanities the data and then execute
+const HeadingComponent1 = () => <h1>Namste React Tile</h1>;
+const HeadingComponent = () => {
+  return (
+    <div id="container">
+        <HeadingComponent1/>
+        {number}
+        {JSXheading}
+        {HeadingComponent1()}
+      <h1>Namste React from Functional Component</h1>
+    </div>
+  );
+};
 
-const parent2 = React.createElement("div", { id: "parent" }, React.createElement("div", { id: "child" }, React.createElement("h1", {}, "I am h1 tag")));
-
-
-/**
- * <div id="parent">
- * <div id="child">
- * <h1 > I am h1 tag </h1>
- * <h2 > I am h2 tag </h2>
- * </div>
- * </div>
- */
-const parent1 = React.createElement("div", 
-{ id: "parent" }, 
-React.createElement("div", { id: "child" }, 
-[React.createElement("h1", {}, "I am h1 tag"), React.createElement("h2", {}, "I am h2 tag")]
-));
-
-
-/**
- * <div id="parent">
- * <div id="child">
- * <h1 > I am h1 tag </h1>
- * <h2 > I am h2 tag </h2>
- * </div>
- * <div id="child2">
- * <h1 > I am h1 tag </h1>
- * <h2 > I am h2 tag </h2>
- * </div>
- * </div>
- */
-
-const parent = React.createElement("div", 
-{ id: "parent" }, 
-[React.createElement("div", { id: "child" }, 
-[React.createElement("h1", {}, "I am h1 tag"), React.createElement("h1", {}, "Namste React "), React.createElement("h1", {}, "Namste React newwwww "),React.createElement("h2", {}, "I am h2 tag")]
-),
-React.createElement("div", { id: "child2" }, 
-[React.createElement("h1", {}, "I am h1 tag"), React.createElement("h2", {}, "I am h2 tag")]
-)]
+const HeadingComponent2 = () => (
+  <h1 className="heading" tabIndex="1">
+    Namste React from Functional Component
+  </h1>
 );
 
-// console.log(parent);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+
+root.render(<HeadingComponent />);
